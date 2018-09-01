@@ -3,8 +3,9 @@ package com.wwt.tools.mathtools.vector;
 /**
  * Some static helpers
  *
- * @author Benni
+ * @author benw@wwt
  */
+@SuppressWarnings("WeakerAccess")
 public final class Vectors {
 
     private Vectors(){}

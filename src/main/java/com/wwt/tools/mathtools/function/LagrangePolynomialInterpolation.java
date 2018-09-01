@@ -3,7 +3,7 @@ package com.wwt.tools.mathtools.function;
 /**
  * Implementation of polynomial interpolation lagrange algorithm
  *
- * @author Benni
+ * @author benw@wwt
  */
 public final class LagrangePolynomialInterpolation implements PolynomialInterpolation {
 

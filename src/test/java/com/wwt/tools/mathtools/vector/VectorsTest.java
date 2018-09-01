@@ -28,6 +28,7 @@ public class VectorsTest {
     }
 
 
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void convertToVectorExceptionTest() {
         int rowSize = 2 ;

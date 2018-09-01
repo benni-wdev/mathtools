@@ -2,7 +2,7 @@ package com.wwt.tools.mathtools.function;
 
 /**
  * interface for functions like f(x) = y with x,y in Real Numbers (modeled via double type)
- * @author Benni
+ * @author benw@wwt
  */
 public interface RealValuedFunction {
 

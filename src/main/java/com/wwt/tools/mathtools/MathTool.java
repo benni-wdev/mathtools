@@ -1,11 +1,10 @@
 package com.wwt.tools.mathtools;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 /**
  * Some helper functions
- * @author Benni
+ * @author benw@wwt
  */
 public final class MathTool {
 
@@ -16,7 +15,7 @@ public final class MathTool {
      *
      * @throws IllegalArgumentException if mod = 0
      */
-    public static long exponentiateMod(long base, long exp, long mod) {
+    public static long exponentiationModulo(long base, long exp, long mod) {
         if(mod == 0) throw new IllegalArgumentException("parameter mod = 0; modulo 0 not allowed");
         long x = 1;
         long y = base;
@@ -37,8 +36,20 @@ public final class MathTool {
      * @param mod
      * @return
      */
-    public static long multiplyMod(long m, long n, long mod) {
+    public static long multiplyModulo(long m, long n, long mod) {
         return BigInteger.valueOf(m).multiply(BigInteger.valueOf(n)).mod(BigInteger.valueOf(mod)).longValue();
+    }
+
+
+    /**
+     * returns true if the number is a perfect square of 2 Integers
+     *
+     * @param number to check
+     * @return true if the number can be calculated by m*m
+     */
+    public static boolean isSquare(long number) {
+        long sqrt = (long) Math.sqrt(number);
+        return sqrt * sqrt == number || (sqrt + 1) * (sqrt + 1) == number;
     }
 
 

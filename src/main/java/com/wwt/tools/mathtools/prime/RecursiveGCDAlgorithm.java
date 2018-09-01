@@ -1,12 +1,12 @@
 package com.wwt.tools.mathtools.prime;
 
 /**
- * @author Benni
+ * @author benw@wwt
  */
 public final class RecursiveGCDAlgorithm implements GreatestCommonDivisorAlgorithm {
 
     private static class RecursiveGCDAlgorithmHolder {
-        private static RecursiveGCDAlgorithm INSTANCE = new RecursiveGCDAlgorithm();
+        private static final RecursiveGCDAlgorithm INSTANCE = new RecursiveGCDAlgorithm();
     }
 
     /**
@@ -19,6 +19,8 @@ public final class RecursiveGCDAlgorithm implements GreatestCommonDivisorAlgorit
     public long getGreatestCommonDivisor(long a, long b) {
         a = Math.abs(a);
         b = Math.abs(b);
+        if(a==0) return b;
+        if(b==0) return a;
         return recursiveGreatestCommonDivisor(a,b);
     }
 

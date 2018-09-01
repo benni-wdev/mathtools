@@ -3,7 +3,7 @@ package com.wwt.tools.mathtools.prime;
 /**
  * interface for probabilistic prime test algorithms
  *
- * @author Benni
+ * @author benw@wwt
  */
 public interface ProbabilisticPrimeTest {
 

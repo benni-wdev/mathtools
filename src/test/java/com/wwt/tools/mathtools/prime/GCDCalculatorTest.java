@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class GCDCalculatorTest {
 
     @Test

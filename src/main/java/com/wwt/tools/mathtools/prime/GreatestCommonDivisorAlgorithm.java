@@ -3,7 +3,7 @@ package com.wwt.tools.mathtools.prime;
 /**
  * Interface for algorithms calculating the greatest common divisor
  *
- * @author Benni
+ * @author benw@wwt
  */
 public interface GreatestCommonDivisorAlgorithm {
 

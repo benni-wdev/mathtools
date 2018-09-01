@@ -3,12 +3,12 @@ package com.wwt.tools.mathtools.function;
 /**
  * Implementation of polynomial interpolation newton algorithm
  *
- * @author Benni
+ * @author benw@wwt
  */
 public class NewtonPolynomialInterpolation implements PolynomialInterpolation {
 
     private static class NewtonPolynomialInterpolationHolder {
-        private static NewtonPolynomialInterpolation INSTANCE = new NewtonPolynomialInterpolation();
+        private static final NewtonPolynomialInterpolation INSTANCE = new NewtonPolynomialInterpolation();
     }
 
 

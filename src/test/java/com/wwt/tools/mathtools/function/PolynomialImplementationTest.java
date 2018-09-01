@@ -1,9 +1,9 @@
 package com.wwt.tools.mathtools.function;
 
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import static com.wwt.tools.mathtools.MathToolTest.delta;
+import static org.junit.Assert.*;
 
 
 public class PolynomialImplementationTest {
@@ -184,6 +184,33 @@ public class PolynomialImplementationTest {
         assertEquals(p1.f(-3),p2.f(-3),delta);
         assertEquals(p1.f(1),p2.f(1),delta);
         assertEquals(p1.toString(),p2.toString());
+    }
+
+    @Test
+    public void equalsTest() {
+        double [] arr1 = {1,1,3,-4};
+        double [] arr2 = {1,1,3,4};
+        double [] arr3 = {1,1,3,-4,5};
+        Polynomial p1 = PolynomialImplementation.from(arr1);
+        assertEquals(p1, PolynomialImplementation.from(arr1));
+        assertEquals(p1, p1);
+        assertNotEquals(p1, PolynomialImplementation.from(arr2));
+        assertNotEquals(p1, PolynomialImplementation.from(arr3));
+        assertNotEquals(p1,null);
+        assertNotEquals(p1,arr1);
+
+    }
+
+    @Test
+    public void hashCodeTest() {
+        double [] arr1 = {1,1,3,-4};
+        double [] arr2 = {1,1,3,4};
+        Polynomial p1 = PolynomialImplementation.from(arr1);
+        Polynomial p2 = PolynomialImplementation.from(arr1);
+        Polynomial p3 = PolynomialImplementation.from(arr2);
+        assertEquals(p1.hashCode(),p2.hashCode());
+        assertEquals(p1.hashCode(),p1.hashCode());
+        assertNotEquals(p1.hashCode(),p3.hashCode());
     }
 
 

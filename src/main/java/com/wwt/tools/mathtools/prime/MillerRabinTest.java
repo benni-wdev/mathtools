@@ -5,12 +5,12 @@ import com.wwt.tools.mathtools.MathTool;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author Benni
+ * @author benw@wwt
  */
 public final class MillerRabinTest implements ProbabilisticPrimeTest {
 
     private static class MillerRabinTestHolder {
-        private static MillerRabinTest INSTANCE = new MillerRabinTest();
+        private static final MillerRabinTest INSTANCE = new MillerRabinTest();
     }
 
     /**
@@ -37,9 +37,9 @@ public final class MillerRabinTest implements ProbabilisticPrimeTest {
             long r = Math.abs(ThreadLocalRandom.current().nextLong());
             long a = r % (numberToTest - 1) + 1;
             long temp = oddRest;
-            long mod = MathTool.exponentiateMod(a, temp, numberToTest);
+            long mod = MathTool.exponentiationModulo(a, temp, numberToTest);
             while (temp != numberToTest - 1 && mod != 1 && mod != numberToTest - 1) {
-                mod = MathTool.multiplyMod(mod, mod, numberToTest);
+                mod = MathTool.multiplyModulo(mod, mod, numberToTest);
                 temp *= 2;
             }
             if (mod != numberToTest - 1 && temp % 2 == 0) {

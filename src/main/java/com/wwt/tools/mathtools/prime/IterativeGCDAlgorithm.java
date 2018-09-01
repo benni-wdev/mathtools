@@ -1,12 +1,12 @@
 package com.wwt.tools.mathtools.prime;
 
 /**
- * @author Benni
+ * @author benw@wwt
  */
 public final class IterativeGCDAlgorithm implements GreatestCommonDivisorAlgorithm {
 
     private static class IterativeGCDAlgorithmHolder {
-        private static IterativeGCDAlgorithm INSTANCE = new IterativeGCDAlgorithm();
+        private static final IterativeGCDAlgorithm INSTANCE = new IterativeGCDAlgorithm();
     }
 
     /**

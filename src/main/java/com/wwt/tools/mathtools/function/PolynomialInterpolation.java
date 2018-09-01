@@ -4,7 +4,7 @@ package com.wwt.tools.mathtools.function;
 /**
  * interface for functions like f(x) = y with x,y in Real Numbers (modeled via double type)
  * Interpolation algorithm which returns a Polynomial as result
- * @author Benni
+ * @author benw@wwt
  */
 public interface PolynomialInterpolation extends InterpolationAlgorithm {
 

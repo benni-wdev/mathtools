@@ -105,6 +105,7 @@ public class VectorImplementationTest {
         assertEquals(index1,v.getValueAt(index2),delta);
         assertEquals(index2,v.getValueAt(index1),delta);
     }
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void switchException1Test() {
         int dim = 5;
@@ -113,6 +114,7 @@ public class VectorImplementationTest {
         Vector v1 = VectorImplementation.from(createTestVector(dim));
         Vector v  = v1.switchValues(index1,index2);
     }
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void switchException2Test() {
         int dim = 5;
@@ -131,32 +133,24 @@ public class VectorImplementationTest {
         }
         vector[dim-1] = 0;
         Vector v1 = VectorImplementation.from(createTestVector(dim));
-        Vector v2 = VectorImplementation.from(createTestVector(dim));
-        Vector v3 = VectorImplementation.from(createTestVector(dim+1));
-        assertTrue(v1.equals(v2));
-        assertTrue(v1.equals(v1));
-        assertFalse(v1.equals(v3));
-        assertFalse(v1.equals(null));
-        assertFalse(v1.equals(createTestVector(dim)));
-        assertFalse(v1.equals(VectorImplementation.from(vector)));
+        assertEquals(v1, VectorImplementation.from(createTestVector(dim)));
+        assertEquals(v1, v1);
+        assertNotEquals(v1, VectorImplementation.from(createTestVector(dim + 1)));
+        assertNotEquals(v1,null);
+        assertNotEquals(v1, createTestVector(dim));
+        assertNotEquals(v1, VectorImplementation.from(vector));
 
     }
 
     @Test
     public void hashCodeTest() {
         int dim = 5;
-        double[] vector = new double[dim];
-        for (int i = 0; i < dim; i++) {
-            vector[i] = i ;
-        }
-        vector[dim-1] = 0;
         Vector v1 = VectorImplementation.from(createTestVector(dim));
         Vector v2 = VectorImplementation.from(createTestVector(dim));
         Vector v3 = VectorImplementation.from(createTestVector(dim+1));
         assertEquals(v1.hashCode(),v2.hashCode());
         assertEquals(v1.hashCode(),v1.hashCode());
         assertNotEquals(v1.hashCode(),v3.hashCode());
-        assertFalse(v1.equals(VectorImplementation.from(vector)));
     }
 
 }

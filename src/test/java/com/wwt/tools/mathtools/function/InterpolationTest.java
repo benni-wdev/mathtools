@@ -9,8 +9,8 @@ import static org.junit.Assert.assertEquals;
 
 public class InterpolationTest {
 
-    public final static double bound = 100;
-    public final static int randomTestSize = 15;
+    private final static double bound = 100;
+    private final static int randomTestSize = 15;
 
     @Test
     public void lagrangeInterpolationTest() {
@@ -47,7 +47,8 @@ public class InterpolationTest {
         executeInterpolationTest(x,fx,LagrangePolynomialInterpolation.getInstance(),delta);
     }
 
-    private void executeInterpolationTest(double []x,double [] fx,PolynomialInterpolation pi,double delta) {
+    @SuppressWarnings("SameParameterValue")
+    private void executeInterpolationTest(double []x, double [] fx, PolynomialInterpolation pi, double delta) {
         Polynomial p = pi.interpolatePolynomial(x,fx);
         for(int i = 0; i < x.length;i++) {
             assertEquals(fx[i],p.f(x[i]),delta);

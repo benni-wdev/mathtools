@@ -12,7 +12,7 @@ package com.wwt.tools.mathtools.vector;
  *  dimension  = 3
  *
  *
- * @author Benni
+ * @author benw@wwt
  */
 public interface Vector {
     /**

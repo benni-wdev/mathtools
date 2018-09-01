@@ -3,7 +3,7 @@ package com.wwt.tools.mathtools.function;
 
 /**
  * computes a RealValuedFunction f which satisfies f(x[i]) = fx[i]
- * @author Benni
+ * @author benw@wwt
  */
 public interface InterpolationAlgorithm {
 

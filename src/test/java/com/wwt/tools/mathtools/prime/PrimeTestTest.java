@@ -8,8 +8,8 @@ import static org.junit.Assert.assertTrue;
 public class PrimeTestTest {
 
 
-    GreatestCommonDivisorAlgorithm gcdCalculator1 = IterativeGCDAlgorithm.getInstance();
-    GreatestCommonDivisorAlgorithm gcdCalculator2 = RecursiveGCDAlgorithm.getInstance();
+    private final GreatestCommonDivisorAlgorithm gcdCalculator1 = IterativeGCDAlgorithm.getInstance();
+    private final GreatestCommonDivisorAlgorithm gcdCalculator2 = RecursiveGCDAlgorithm.getInstance();
 
 
     @Test

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * Immutable implementation of Vector as double array
- * @author Benni
+ * @author benw@wwt
  */
 public class VectorImplementation implements Vector{
 
@@ -16,6 +16,7 @@ public class VectorImplementation implements Vector{
      * For creation use the static factory method.
      * @param vector
      */
+    @SuppressWarnings("WeakerAccess")
     protected VectorImplementation(double [] vector) {
         this.vector = vector;
     }
@@ -73,7 +74,8 @@ public class VectorImplementation implements Vector{
     public String toString() {
         StringBuilder s = new StringBuilder("VectorImplementation{ \n");
         for(int i=0;i<this.getDimension();i++) {
-            s.append(vector[i]+"\n");
+            s.append(vector[i]);
+            s.append("\n");
         }
         s.append("}");
         return s.toString();

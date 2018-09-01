@@ -6,8 +6,9 @@ import java.util.Arrays;
 /**
  * Immutable implementation of Matrix as 2 dimensional double array
  *
- * @author Benni
+ * @author benw@wwt
  */
+@SuppressWarnings("ALL")
 public class MatrixImplementation implements Matrix {
 
 
@@ -34,6 +35,7 @@ public class MatrixImplementation implements Matrix {
      * For creation use the static factory method.
      * @param matrix
      */
+    @SuppressWarnings("WeakerAccess")
     protected MatrixImplementation(double [][] matrix) {
         this.matrix = matrix;
     }
@@ -138,7 +140,8 @@ public class MatrixImplementation implements Matrix {
         StringBuilder s = new StringBuilder("MatrixImplementation{ \n");
         for(int i=0;i<this.getRowNumber();i++) {
             for(int j=0;j<this.getColumnNumber();j++) {
-                s.append(matrix[i][j]+" ");
+                s.append(matrix[i][j]);
+                s.append(" ");
             }
             s.append("\n");
         }

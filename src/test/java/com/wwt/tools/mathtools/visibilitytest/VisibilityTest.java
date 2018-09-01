@@ -1,5 +1,6 @@
 package com.wwt.tools.mathtools.visibilitytest;
 
+import com.wwt.tools.mathtools.MathTool;
 import com.wwt.tools.mathtools.function.*;
 import com.wwt.tools.mathtools.prime.*;
 import com.wwt.tools.mathtools.vector.Matrix;
@@ -14,12 +15,18 @@ import static com.wwt.tools.mathtools.MathToolTest.*;
 /**
  * checking visibility
  *
- * @author Benni
+ * @author benw@wwt
  */
+@SuppressWarnings({"unused", "ResultOfMethodCallIgnored", "SpellCheckingInspection"})
 public class VisibilityTest {
 
     @Test
     public void test() {
+        /* package mathtools */
+        MathTool.isSquare(39);
+        MathTool.multiplyModulo(2,3,4);
+        MathTool.exponentiationModulo(2,3,4);
+
         /* Package function */
         double [] x1 = {-1.5,-0.75,0,0.75,1.5};
         double [] fx1 = {-14.101420,-0.931596,0,0.931596,14.101420};
@@ -50,6 +57,18 @@ public class VisibilityTest {
         GreatestCommonDivisorAlgorithm prime3 = RecursiveGCDAlgorithm.getInstance();
         prime3.getGreatestCommonDivisor(3,5);
         ProbabilisticPrimeTest prime4 = MillerRabinTest.getInstance();
+        prime4.isPrime(9,5);
+        PrimeSequenceGenerator prime5 = SieveOfSundaram.getInstance();
+        prime5.getPrimeSequence(5);
+        prime5 = SieveOfEratosthenes.getInstance();
+        prime5.getPrimeSequence(4);
+        FactorizationAlgorithm prime6 = FermatFactorization.getInstance(MillerRabinTest.getInstance());
+        prime6.factorize(12);
+        FactorizationAlgorithm prime7 = FermatFactorization.getInstance(FermatPrimeTest.getInstance(prime1),12);
+        prime7.factorize(12);
+        FactorizationAlgorithm prime8 = FactorizationByDivision.getInstance(SieveOfEratosthenes.getInstance());
+        prime8.factorize(12);
+
 
         /* Package vector */
         double [] vector = {5,3,2};

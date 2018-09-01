@@ -4,19 +4,20 @@ import java.util.Arrays;
 
 /**
  * Immutable implementation of Polynomial as double array of coefficients
- * @author Benni
- * @todo override equals,hashCode
+ * @author benw@wwt
  */
 public class PolynomialImplementation implements Polynomial {
 
 
     private final double [] coefficients;
+    private int hashCode;
 
     /**
      * protected constructor for subclassing, so that the implementation can be extended with new operations
      * For creation use the static factory method.
      * @param coefficients
      */
+    @SuppressWarnings("WeakerAccess")
     protected PolynomialImplementation(double [] coefficients) {
         this.coefficients = coefficients;
     }
@@ -131,6 +132,31 @@ public class PolynomialImplementation implements Polynomial {
         if(coefficients[0] != 0 ) s.append("+").append(coefficients[0]);
         s.append("]");
         return s.toString();
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if (other == null) return false;
+        if (other == this) return true;
+        if (!(other instanceof Polynomial))return false;
+        Polynomial v = (Polynomial) other;
+        if (v.getDegree() != this.getDegree()) return false;
+        for (int i = 0; i <= this.getDegree(); i++) {
+            if(this.getCoefficient(i) != v.getCoefficient(i)) return false;
+        }
+        return(true);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = hashCode;
+        if(hashCode == 0) {
+            for (int i = 0; i <= this.getDegree(); i++) {
+                result = result * 31 + Double.hashCode(this.getCoefficient(i));
+            }
+            hashCode = result;
+        }
+        return result;
     }
 
 

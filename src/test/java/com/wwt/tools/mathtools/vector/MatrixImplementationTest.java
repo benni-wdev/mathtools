@@ -43,6 +43,7 @@ public class MatrixImplementationTest {
         }
     }
 
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void getVectorException1Test() {
         int rowSize = 3 ;
@@ -51,6 +52,7 @@ public class MatrixImplementationTest {
         Vector row = m.getRowVectorAt(rowSize);
     }
 
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void getVectorException2Test() {
         int rowSize = 3 ;
@@ -75,6 +77,7 @@ public class MatrixImplementationTest {
         }
     }
 
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void addException1Test() {
         int rowSize1 = 2 ;
@@ -85,6 +88,7 @@ public class MatrixImplementationTest {
         Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize2,columnSize2));
         Matrix m = m1.add(m2);
     }
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void addException2Test() {
         int rowSize1 = 2 ;
@@ -103,6 +107,7 @@ public class MatrixImplementationTest {
         int columnSize2 = 5;
         Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize1,columnSize1));
         Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize2,columnSize2));
+        //noinspection unused
         Matrix m = m1.add(m2);
     }
 
@@ -126,6 +131,7 @@ public class MatrixImplementationTest {
 
     }
 
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void multiplyMatrixExceptionTest() {
         int rowSize1 = 3 ;
@@ -156,7 +162,6 @@ public class MatrixImplementationTest {
     public void multiplyVectorTest() {
         int rowSize = 3 ;
         int columnSize = 4;
-        double scalar = 3.5;
         Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
         Vector v1 = VectorImplementation.from(createTestMatrix(1,columnSize)[0]);
         Vector v = m1.multiply(v1);
@@ -166,6 +171,7 @@ public class MatrixImplementationTest {
         assertEquals(26,v.getValueAt(2),delta);
     }
 
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void multiplyVectorExceptionTest() {
         int rowSize = 3 ;
@@ -187,6 +193,7 @@ public class MatrixImplementationTest {
         assertEquals(m1.getRowVectorAt(index2), m.getRowVectorAt(index1));
 
     }
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void switchRowException1Test() {
         int rowSize = 3 ;
@@ -196,6 +203,7 @@ public class MatrixImplementationTest {
         Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
         Matrix m  = m1.switchRowVector(index1,index2);
     }
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void switchRowException2Test() {
         int rowSize = 3 ;
@@ -218,6 +226,7 @@ public class MatrixImplementationTest {
         assertEquals(m1.getColumnVectorAt(index2), m.getColumnVectorAt(index1));
     }
 
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void switchColumnException1Test() {
         int rowSize = 3 ;
@@ -228,6 +237,7 @@ public class MatrixImplementationTest {
         Matrix m  = m1.switchColumnVector(index1,index2);
     }
 
+    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void switchColumnException2Test() {
         int rowSize = 3 ;
@@ -236,6 +246,35 @@ public class MatrixImplementationTest {
         int index2 = 2;
         Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
         Matrix m  = m1.switchColumnVector(index1,index2);
+    }
+
+    @Test
+    public void equalsTest() {
+        int rowSize = 3 ;
+        int columnSize = 4;
+        double [][] matrix = createTestMatrix(rowSize,columnSize);
+        matrix[rowSize-1][columnSize-1] = 0;
+        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        assertEquals(m1, MatrixImplementation.from(createTestMatrix(rowSize,columnSize)));
+        assertEquals(m1, m1);
+        assertNotEquals(m1, MatrixImplementation.from(createTestMatrix(rowSize+1,columnSize)));
+        assertNotEquals(m1, MatrixImplementation.from(createTestMatrix(rowSize,columnSize+1)));
+        assertNotEquals(m1,null);
+        assertNotEquals(m1, createTestMatrix(rowSize,columnSize));
+        assertNotEquals(m1, MatrixImplementation.from(matrix));
+
+    }
+
+    @Test
+    public void hashCodeTest() {
+        int rowSize = 3 ;
+        int columnSize = 4;
+        double [][] matrix = createTestMatrix(rowSize,columnSize);
+        matrix[rowSize-1][columnSize-1] = 0;
+        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        assertEquals(m1.hashCode(),MatrixImplementation.from(createTestMatrix(rowSize,columnSize)).hashCode());
+        assertEquals(m1.hashCode(),m1.hashCode());
+        assertNotEquals(m1.hashCode(),MatrixImplementation.from(matrix).hashCode());
     }
 
 }

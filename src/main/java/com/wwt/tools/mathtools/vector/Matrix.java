@@ -17,7 +17,7 @@ package com.wwt.tools.mathtools.vector;
  *  |
  *  row number  = 3
  *
- * @author Benni
+ * @author benw@wwt
  */
 public interface Matrix {
 

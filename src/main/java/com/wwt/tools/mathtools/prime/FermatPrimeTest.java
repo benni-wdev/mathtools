@@ -7,11 +7,11 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Implementation of Fermat prime test, GCD calculator can be provided
  *
- * @author Benni
+ * @author benw@wwt
  */
 public final class FermatPrimeTest implements ProbabilisticPrimeTest {
 
-    private GreatestCommonDivisorAlgorithm gcdCalculator;
+    private final GreatestCommonDivisorAlgorithm gcdCalculator;
 
     private FermatPrimeTest(GreatestCommonDivisorAlgorithm gcdCalculator) {
         this.gcdCalculator = gcdCalculator;
@@ -25,7 +25,7 @@ public final class FermatPrimeTest implements ProbabilisticPrimeTest {
         for(int i=0;i<iterations;i++) {
             long a = 2 + (Math.abs(ThreadLocalRandom.current().nextLong()) % (numberToTest-3));
             if(gcdCalculator.getGreatestCommonDivisor(a,numberToTest)!= 1) return false;
-            if(MathTool.exponentiateMod(a,numberToTest-1,numberToTest) != 1) return false;
+            if(MathTool.exponentiationModulo(a,numberToTest-1,numberToTest) != 1) return false;
         }
         return true;
     }
