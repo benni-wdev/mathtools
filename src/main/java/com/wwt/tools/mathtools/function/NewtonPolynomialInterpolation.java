@@ -42,7 +42,7 @@ public class NewtonPolynomialInterpolation implements PolynomialInterpolation {
     }
 
     private Polynomial from(double [] arr) {
-        return PolynomialImplementation.from(arr);
+        return ArrayPolynomial.from(arr);
     }
 
     /**

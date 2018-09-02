@@ -47,7 +47,7 @@ public class GCDCalculatorTest {
     public void speedTest() {
         GreatestCommonDivisorAlgorithm rcalc = RecursiveGCDAlgorithm.getInstance();
         GreatestCommonDivisorAlgorithm icalc = IterativeGCDAlgorithm.getInstance();
-        int iterations = 100;
+        int iterations = 10;
         long lowerBoundRandom = -10000;
         long upperBoundRandom = 10000;
         int sampleSize = 30;
@@ -59,13 +59,13 @@ public class GCDCalculatorTest {
         IntStream.range(0, iterations).forEach(i->icalc.getGreatestCommonDivisor(toTest[i%sampleSize][0],toTest[i%sampleSize][1]));
         LocalDateTime end = LocalDateTime.now();
         long ims = start.until(end,ChronoUnit.MILLIS);
-        System.out.println("IterativeGCD (ms):"+ims);
+        //System.out.println("IterativeGCD (ms):"+ims);
 
         start = LocalDateTime.now();
         IntStream.range(0, iterations).forEach(i->rcalc.getGreatestCommonDivisor(toTest[i%sampleSize][0],toTest[i%sampleSize][1]));
         end = LocalDateTime.now();
         long rms = start.until(end,ChronoUnit.MILLIS);
-        System.out.println("RecursiveGCD (ms) :"+rms);
+        //System.out.println("RecursiveGCD (ms) :"+rms);
         assertTrue(true);
     }
 }

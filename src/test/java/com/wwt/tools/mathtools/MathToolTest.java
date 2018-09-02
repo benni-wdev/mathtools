@@ -65,6 +65,16 @@ public class MathToolTest {
         return matrix;
     }
 
+    public static double [][]  createRandomTestMatrix(int rowSize, int columnSize) {
+        double[][] matrix = new double[rowSize][columnSize];
+        for (int i = 0; i < rowSize; i++) {
+            for (int j = 0; j < columnSize; j++) {
+                matrix[i][j] = ThreadLocalRandom.current().nextDouble();
+            }
+        }
+        return matrix;
+    }
+
     public static double [] createTestVector(int dimension) {
         double[] vector = new double[dimension];
         for (int i = 0; i < dimension; i++) {

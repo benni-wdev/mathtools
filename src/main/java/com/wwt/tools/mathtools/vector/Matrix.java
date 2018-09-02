@@ -85,13 +85,13 @@ public interface Matrix {
      * Vector dimension must be equal to matrix column number
      *
      * Matrix      Vector
-     * 7 2 5 1     6
-     * 8 4 3 1  X  7
-     * 9 7 0 6    -1
+     * 7 2 5 1     6       51
+     * 8 4 3 1  X  7    =  ..
+     * 9 7 0 6    -1       ..
      *             0
      *
-     * @param v
-     * @return
+     * @param v the vector
+     * @return a new vector which has dimension matrix.getRowNumber
      */
     Vector multiply(Vector v);
 
@@ -110,5 +110,13 @@ public interface Matrix {
      * @return
      */
     Matrix switchColumnVector(int index1,int index2);
+
+    /**
+     * transpose returns the matrix where the column vectors of the original matrix are switched to row vectors and vice versa.
+     * So an m x n matrix is transposed to a n x m matrix
+     * @return
+     */
+    Matrix getTranspose();
+
 
 }

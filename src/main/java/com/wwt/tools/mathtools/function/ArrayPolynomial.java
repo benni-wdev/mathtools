@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Immutable implementation of Polynomial as double array of coefficients
  * @author benw@wwt
  */
-public class PolynomialImplementation implements Polynomial {
+public class ArrayPolynomial implements Polynomial {
 
 
     private final double [] coefficients;
@@ -18,7 +18,7 @@ public class PolynomialImplementation implements Polynomial {
      * @param coefficients
      */
     @SuppressWarnings("WeakerAccess")
-    protected PolynomialImplementation(double [] coefficients) {
+    protected ArrayPolynomial(double [] coefficients) {
         this.coefficients = coefficients;
     }
 
@@ -55,7 +55,7 @@ public class PolynomialImplementation implements Polynomial {
 
     @Override
     public Polynomial normalize() {
-        PolynomialImplementation returnValue = this.constructReturnValue();
+        ArrayPolynomial returnValue = this.constructReturnValue();
         double tmp = returnValue.coefficients[returnValue.coefficients.length-1];
 
         for(int i=0;i<returnValue.coefficients.length-1;i++) {
@@ -70,7 +70,7 @@ public class PolynomialImplementation implements Polynomial {
 
     @Override
     public Polynomial multiplyScalar(double scalar) {
-        PolynomialImplementation returnValue = this.constructReturnValue();
+        ArrayPolynomial returnValue = this.constructReturnValue();
         for(int i=0;i<returnValue.coefficients.length;i++) {
             returnValue.coefficients[i] *= scalar;
         }
@@ -83,7 +83,7 @@ public class PolynomialImplementation implements Polynomial {
         for(int i=0;i<derivative.length;i++){
             derivative[i] = coefficients[i+1]*(double)(i+1);
         }
-        return PolynomialImplementation.from(derivative);
+        return ArrayPolynomial.from(derivative);
     }
 
 
@@ -93,7 +93,7 @@ public class PolynomialImplementation implements Polynomial {
         for(int i = 0;i<addedCoefficients.length;i++) {
             addedCoefficients[i] = this.getCoefficient(i) + p2.getCoefficient(i);
         }
-        return PolynomialImplementation.from(addedCoefficients);
+        return ArrayPolynomial.from(addedCoefficients);
 
     }
 
@@ -103,7 +103,7 @@ public class PolynomialImplementation implements Polynomial {
         for(int i = 0;i<addedCoefficients.length;i++) {
             addedCoefficients[i] = this.getCoefficient(i) - p2.getCoefficient(i);
         }
-        return PolynomialImplementation.from(addedCoefficients);
+        return ArrayPolynomial.from(addedCoefficients);
     }
 
     @Override
@@ -114,7 +114,7 @@ public class PolynomialImplementation implements Polynomial {
                 multipliedCoefficients[i+j] += this.getCoefficient(i)*p2.getCoefficient(j);
             }
         }
-        return PolynomialImplementation.from(multipliedCoefficients);
+        return ArrayPolynomial.from(multipliedCoefficients);
     }
 
     @Override
@@ -165,21 +165,21 @@ public class PolynomialImplementation implements Polynomial {
      *
      * @return
      */
-    public final PolynomialImplementation shrinkArray() {
+    public final ArrayPolynomial shrinkArray() {
         if(coefficients[coefficients.length-1] != 0) {
             return this;
         }
-        else return (PolynomialImplementation) PolynomialImplementation.from(coefficients);
+        else return (ArrayPolynomial) ArrayPolynomial.from(coefficients);
     }
 
 
-    private PolynomialImplementation constructReturnValue() {
+    private ArrayPolynomial constructReturnValue() {
         if (coefficients[coefficients.length-1] == 0) {
             return this.shrinkArray();
         }
         else {
             double [] coefficientsCopy = Arrays.copyOf(coefficients,coefficients.length);
-            return new PolynomialImplementation(coefficientsCopy);
+            return new ArrayPolynomial(coefficientsCopy);
         }
     }
 
@@ -198,7 +198,7 @@ public class PolynomialImplementation implements Polynomial {
             }
         }
         double [] coefficientsCopy = Arrays.copyOf(coefficients,newSize);
-        return new PolynomialImplementation(coefficientsCopy);
+        return new ArrayPolynomial(coefficientsCopy);
     }
 
 

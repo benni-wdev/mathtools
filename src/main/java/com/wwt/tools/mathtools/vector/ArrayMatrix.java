@@ -8,8 +8,7 @@ import java.util.Arrays;
  *
  * @author benw@wwt
  */
-@SuppressWarnings("ALL")
-public class MatrixImplementation implements Matrix {
+public class ArrayMatrix implements Matrix {
 
 
     /**
@@ -36,7 +35,7 @@ public class MatrixImplementation implements Matrix {
      * @param matrix
      */
     @SuppressWarnings("WeakerAccess")
-    protected MatrixImplementation(double [][] matrix) {
+    protected ArrayMatrix(double [][] matrix) {
         this.matrix = matrix;
     }
 
@@ -53,13 +52,13 @@ public class MatrixImplementation implements Matrix {
     @Override
     public Vector getColumnVectorAt(int columnIndex) {
         if(columnIndex >= getColumnNumber()) throw new IllegalArgumentException("index out of range");
-        return VectorImplementation.from(getColumn(matrix,columnIndex));
+        return ArrayVector.from(getColumn(matrix,columnIndex));
     }
 
     @Override
     public Vector getRowVectorAt(int rowIndex) {
         if(rowIndex >= getRowNumber()) throw new IllegalArgumentException("index out of range");
-        return VectorImplementation.from(matrix[rowIndex]) ;
+        return ArrayVector.from(matrix[rowIndex]) ;
     }
 
     @Override
@@ -72,7 +71,7 @@ public class MatrixImplementation implements Matrix {
                 returnValue[i][j]=matrix[i][j]+m.getValueAt(i,j);
             }
         }
-        return new MatrixImplementation(returnValue);
+        return new ArrayMatrix(returnValue);
     }
 
     @Override
@@ -85,7 +84,7 @@ public class MatrixImplementation implements Matrix {
                 returnValue[i][j] = this.getRowVectorAt(i).getScalarProduct(m.getColumnVectorAt(j));
             }
         }
-        return new MatrixImplementation(returnValue);
+        return new ArrayMatrix(returnValue);
     }
 
 
@@ -97,7 +96,7 @@ public class MatrixImplementation implements Matrix {
                 returnValue[i][j]=returnValue[i][j]*scalar;
             }
         }
-        return new MatrixImplementation(returnValue);
+        return new ArrayMatrix(returnValue);
     }
 
     @Override
@@ -118,7 +117,7 @@ public class MatrixImplementation implements Matrix {
         for (int i = 0; i < getColumnNumber(); i++) {
             returnValue[index2][i] = tmp.getValueAt(i);
         }
-        return new MatrixImplementation(returnValue);
+        return new ArrayMatrix(returnValue);
     }
 
     @Override
@@ -132,12 +131,23 @@ public class MatrixImplementation implements Matrix {
         for (int i = 0; i < getRowNumber(); i++) {
             returnValue[i][index2] = tmp.getValueAt(i);
         }
-        return new MatrixImplementation(returnValue);
+        return new ArrayMatrix(returnValue);
+    }
+
+    @Override
+    public Matrix getTranspose() {
+        double [][] returnValue = new double[this.getColumnNumber()][this.getRowNumber()];
+        for (int i = 0; i < returnValue.length ; i++) {
+            for (int j = 0; j < returnValue[0].length; j++) {
+                returnValue[i][j] = matrix[j][i];
+            }
+        }
+        return new ArrayMatrix(returnValue);
     }
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder("MatrixImplementation{ \n");
+        StringBuilder s = new StringBuilder("ArrayMatrix{ \n");
         for(int i=0;i<this.getRowNumber();i++) {
             for(int j=0;j<this.getColumnNumber();j++) {
                 s.append(matrix[i][j]);
@@ -184,9 +194,9 @@ public class MatrixImplementation implements Matrix {
      * @param matrix given 2 dimensional double array which represents the matrix
      * @return matrix object with input array as values [rows][columns]
      */
-    public static MatrixImplementation from(double [][] matrix) {
+    public static ArrayMatrix from(double [][] matrix) {
         double [][] matrixCopy = copy(matrix);
-        return new MatrixImplementation(matrixCopy);
+        return new ArrayMatrix(matrixCopy);
     }
 
 

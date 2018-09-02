@@ -5,14 +5,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static com.wwt.tools.mathtools.MathToolTest.*;
 
-public class MatrixImplementationTest {
+public class ArrayMatrixTest {
 
     @Test
     public void creationTest() {
         int rowSize = 3 ;
         int columnSize = 4;
         double [] [] matrix =createTestMatrix(rowSize,columnSize);
-        Matrix m = MatrixImplementation.from(matrix);
+        Matrix m = ArrayMatrix.from(matrix);
         matrix[rowSize-1][columnSize-1] = Double.MAX_VALUE;
         assertEquals(rowSize+columnSize-2,m.getValueAt(rowSize-1,columnSize-1),delta);
     }
@@ -21,7 +21,7 @@ public class MatrixImplementationTest {
     public void countTest() {
         int rowSize = 3 ;
         int columnSize = 4;
-        Matrix m = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         assertEquals(rowSize,m.getRowNumber());
         assertEquals(columnSize,m.getColumnNumber());
     }
@@ -32,7 +32,7 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         int rowIndex = 1;
         int columnIndex = 3;
-        Matrix m = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Vector row = m.getRowVectorAt(rowIndex);
         for(int i=0;i<columnSize;i++) {
            assertEquals(rowIndex+i,row.getValueAt(i),delta);
@@ -48,7 +48,7 @@ public class MatrixImplementationTest {
     public void getVectorException1Test() {
         int rowSize = 3 ;
         int columnSize = 4;
-        Matrix m = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Vector row = m.getRowVectorAt(rowSize);
     }
 
@@ -57,7 +57,7 @@ public class MatrixImplementationTest {
     public void getVectorException2Test() {
         int rowSize = 3 ;
         int columnSize = 4;
-        Matrix m = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Vector column = m.getColumnVectorAt(columnSize);
     }
 
@@ -65,8 +65,8 @@ public class MatrixImplementationTest {
     public void addTest() {
         int rowSize = 3 ;
         int columnSize = 4;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
-        Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
+        Matrix m2 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Matrix m = m1.add(m2);
         Matrix n = m2.add(m1);
         for(int i=0;i<rowSize;i++) {
@@ -84,8 +84,8 @@ public class MatrixImplementationTest {
         int columnSize1 = 7;
         int rowSize2 = 3 ;
         int columnSize2 = 5;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize1,columnSize1));
-        Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize2,columnSize2));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize1,columnSize1));
+        Matrix m2 = ArrayMatrix.from(createTestMatrix(rowSize2,columnSize2));
         Matrix m = m1.add(m2);
     }
     @SuppressWarnings("unused")
@@ -95,8 +95,8 @@ public class MatrixImplementationTest {
         int columnSize1 = 7;
         int rowSize2 = 2 ;
         int columnSize2 = 5;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize1,columnSize1));
-        Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize2,columnSize2));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize1,columnSize1));
+        Matrix m2 = ArrayMatrix.from(createTestMatrix(rowSize2,columnSize2));
         Matrix m = m1.add(m2);
     }
     @Test(expected = IllegalArgumentException.class)
@@ -105,8 +105,8 @@ public class MatrixImplementationTest {
         int columnSize1 = 5;
         int rowSize2 = 2 ;
         int columnSize2 = 5;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize1,columnSize1));
-        Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize2,columnSize2));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize1,columnSize1));
+        Matrix m2 = ArrayMatrix.from(createTestMatrix(rowSize2,columnSize2));
         //noinspection unused
         Matrix m = m1.add(m2);
     }
@@ -117,8 +117,8 @@ public class MatrixImplementationTest {
         int columnSize1 = 3;
         int rowSize2 = 3 ;
         int columnSize2 = 4;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize1,columnSize1));
-        Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize2,columnSize2));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize1,columnSize1));
+        Matrix m2 = ArrayMatrix.from(createTestMatrix(rowSize2,columnSize2));
         Matrix m = m1.multiply(m2);
         assertEquals(rowSize1,m.getRowNumber());
         assertEquals(columnSize2,m.getColumnNumber());
@@ -138,8 +138,8 @@ public class MatrixImplementationTest {
         int columnSize1 = 5;
         int rowSize2 = 3 ;
         int columnSize2 = 5;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize1,columnSize1));
-        Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize2,columnSize2));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize1,columnSize1));
+        Matrix m2 = ArrayMatrix.from(createTestMatrix(rowSize2,columnSize2));
         Matrix m = m1.multiply(m2);
 
     }
@@ -149,7 +149,7 @@ public class MatrixImplementationTest {
         int rowSize = 3 ;
         int columnSize = 4;
         double scalar = 3.5;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Matrix m = m1.multiply(scalar);
         for(int i=0;i<rowSize;i++) {
             for(int j=0;j<columnSize;j++) {
@@ -162,8 +162,8 @@ public class MatrixImplementationTest {
     public void multiplyVectorTest() {
         int rowSize = 3 ;
         int columnSize = 4;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
-        Vector v1 = VectorImplementation.from(createTestMatrix(1,columnSize)[0]);
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
+        Vector v1 = ArrayVector.from(createTestMatrix(1,columnSize)[0]);
         Vector v = m1.multiply(v1);
         assertEquals(rowSize,v.getDimension());
         assertEquals(14,v.getValueAt(0),delta);
@@ -176,8 +176,8 @@ public class MatrixImplementationTest {
     public void multiplyVectorExceptionTest() {
         int rowSize = 3 ;
         int columnSize = 4;
-        Matrix m = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
-        Vector v = VectorImplementation.from(new double [] {1,2});
+        Matrix m = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
+        Vector v = ArrayVector.from(new double [] {1,2});
         Vector w = m.multiply(v);
     }
 
@@ -187,7 +187,7 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         int index1 = 1;
         int index2 = 2;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Matrix m  = m1.switchRowVector(index1,index2);
         assertEquals(m1.getRowVectorAt(index1), m.getRowVectorAt(index2));
         assertEquals(m1.getRowVectorAt(index2), m.getRowVectorAt(index1));
@@ -200,7 +200,7 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         int index1 = 3;
         int index2 = 2;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Matrix m  = m1.switchRowVector(index1,index2);
     }
     @SuppressWarnings("unused")
@@ -210,7 +210,7 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         int index1 = 2;
         int index2 = 3;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Matrix m  = m1.switchRowVector(index1,index2);
     }
 
@@ -220,7 +220,7 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         int index1 = 1;
         int index2 = 2;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Matrix m  = m1.switchColumnVector(index1,index2);
         assertEquals(m1.getColumnVectorAt(index1), m.getColumnVectorAt(index2));
         assertEquals(m1.getColumnVectorAt(index2), m.getColumnVectorAt(index1));
@@ -233,7 +233,7 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         int index1 = 2;
         int index2 = 4;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Matrix m  = m1.switchColumnVector(index1,index2);
     }
 
@@ -244,8 +244,23 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         int index1 = 4;
         int index2 = 2;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Matrix m  = m1.switchColumnVector(index1,index2);
+    }
+
+    @Test
+    public void getTransposeTest() {
+        int rowSize = 3 ;
+        int columnSize = 4;
+        Matrix m1 = ArrayMatrix.from(createRandomTestMatrix(rowSize,columnSize));
+        Matrix m  = m1.getTranspose();
+        assertEquals(m1.getRowNumber(), m.getColumnNumber());
+        assertEquals(m.getRowNumber(), m1.getColumnNumber());
+        for(int i=0;i<rowSize;i++) {
+            for(int j=0;j<columnSize;j++) {
+                assertEquals(m1.getValueAt(i,j),m.getValueAt(j,i),delta);
+            }
+        }
     }
 
     @Test
@@ -254,14 +269,14 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         double [][] matrix = createTestMatrix(rowSize,columnSize);
         matrix[rowSize-1][columnSize-1] = 0;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
-        assertEquals(m1, MatrixImplementation.from(createTestMatrix(rowSize,columnSize)));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
+        assertEquals(m1, ArrayMatrix.from(createTestMatrix(rowSize,columnSize)));
         assertEquals(m1, m1);
-        assertNotEquals(m1, MatrixImplementation.from(createTestMatrix(rowSize+1,columnSize)));
-        assertNotEquals(m1, MatrixImplementation.from(createTestMatrix(rowSize,columnSize+1)));
+        assertNotEquals(m1, ArrayMatrix.from(createTestMatrix(rowSize+1,columnSize)));
+        assertNotEquals(m1, ArrayMatrix.from(createTestMatrix(rowSize,columnSize+1)));
         assertNotEquals(m1,null);
         assertNotEquals(m1, createTestMatrix(rowSize,columnSize));
-        assertNotEquals(m1, MatrixImplementation.from(matrix));
+        assertNotEquals(m1, ArrayMatrix.from(matrix));
 
     }
 
@@ -271,10 +286,10 @@ public class MatrixImplementationTest {
         int columnSize = 4;
         double [][] matrix = createTestMatrix(rowSize,columnSize);
         matrix[rowSize-1][columnSize-1] = 0;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
-        assertEquals(m1.hashCode(),MatrixImplementation.from(createTestMatrix(rowSize,columnSize)).hashCode());
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
+        assertEquals(m1.hashCode(),ArrayMatrix.from(createTestMatrix(rowSize,columnSize)).hashCode());
         assertEquals(m1.hashCode(),m1.hashCode());
-        assertNotEquals(m1.hashCode(),MatrixImplementation.from(matrix).hashCode());
+        assertNotEquals(m1.hashCode(),ArrayMatrix.from(matrix).hashCode());
     }
 
 }

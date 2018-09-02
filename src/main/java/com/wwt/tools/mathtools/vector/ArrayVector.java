@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Immutable implementation of Vector as double array
  * @author benw@wwt
  */
-public class VectorImplementation implements Vector{
+public class ArrayVector implements Vector{
 
     private final double [] vector;
     private int hashCode;
@@ -17,7 +17,7 @@ public class VectorImplementation implements Vector{
      * @param vector
      */
     @SuppressWarnings("WeakerAccess")
-    protected VectorImplementation(double [] vector) {
+    protected ArrayVector(double [] vector) {
         this.vector = vector;
     }
 
@@ -47,7 +47,7 @@ public class VectorImplementation implements Vector{
         for(int i=0;i<returnValue.length;i++) {
             returnValue[i] = getValueAt(i)*scalar;
         }
-        return new VectorImplementation(returnValue);
+        return new ArrayVector(returnValue);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class VectorImplementation implements Vector{
         for(int i=0;i<returnValue.length;i++) {
             returnValue[i] = this.getValueAt(i)+v.getValueAt(i);
         }
-        return new VectorImplementation(returnValue);
+        return new ArrayVector(returnValue);
     }
 
     @Override
@@ -67,12 +67,12 @@ public class VectorImplementation implements Vector{
         double tmp = returnValue[index1];
         returnValue[index1] = returnValue[index2];
         returnValue[index2] = tmp;
-        return new VectorImplementation(returnValue);
+        return new ArrayVector(returnValue);
     }
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder("VectorImplementation{ \n");
+        StringBuilder s = new StringBuilder("ArrayVector{ \n");
         for(int i=0;i<this.getDimension();i++) {
             s.append(vector[i]);
             s.append("\n");
@@ -112,9 +112,9 @@ public class VectorImplementation implements Vector{
      * @param vector
      * @return
      */
-    public static VectorImplementation from(double [] vector) {
+    public static ArrayVector from(double [] vector) {
         double [] vectorCopy = Arrays.copyOf(vector,vector.length);
-        return new VectorImplementation(vectorCopy);
+        return new ArrayVector(vectorCopy);
     }
 
 

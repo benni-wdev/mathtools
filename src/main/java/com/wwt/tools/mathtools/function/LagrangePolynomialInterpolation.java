@@ -41,7 +41,7 @@ public final class LagrangePolynomialInterpolation implements PolynomialInterpol
     }
 
     private Polynomial from(double [] arr) {
-        return PolynomialImplementation.from(arr);
+        return ArrayPolynomial.from(arr);
     }
 
     /**

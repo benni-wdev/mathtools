@@ -27,7 +27,7 @@ public final class Vectors {
                 returnValue[i+j] = m.getValueAt(i,j);
             }
         }
-        return VectorImplementation.from(returnValue);
+        return ArrayVector.from(returnValue);
     }
 
     /**
@@ -40,7 +40,7 @@ public final class Vectors {
         for (int i = 0; i < v.getDimension() ; i++) {
             returnValue[i][0] = v.getValueAt(i);
         }
-        return new MatrixImplementation(returnValue);
+        return new ArrayMatrix(returnValue);
     }
 
     /**
@@ -58,7 +58,7 @@ public final class Vectors {
         for (int i = 0; i < dimension ; i++) {
             returnValue[i][i] = 1;
         }
-        return new MatrixImplementation(returnValue);
+        return new ArrayMatrix(returnValue);
     }
 
 }

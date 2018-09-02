@@ -3,10 +3,10 @@ package com.wwt.tools.mathtools.visibilitytest;
 import com.wwt.tools.mathtools.MathTool;
 import com.wwt.tools.mathtools.function.*;
 import com.wwt.tools.mathtools.prime.*;
+import com.wwt.tools.mathtools.vector.ArrayMatrix;
+import com.wwt.tools.mathtools.vector.ArrayVector;
 import com.wwt.tools.mathtools.vector.Matrix;
-import com.wwt.tools.mathtools.vector.MatrixImplementation;
 import com.wwt.tools.mathtools.vector.Vector;
-import com.wwt.tools.mathtools.vector.VectorImplementation;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -40,14 +40,14 @@ public class VisibilityTest {
         double v2 = f2.f(x2[0]);
 
         double [] arr = {5,3,2};
-        Polynomial p = PolynomialImplementation.from(arr);
+        Polynomial p = ArrayPolynomial.from(arr);
         p.getDegree();
         p.multiply(p.differentiate());
         p.add(p.normalize());
         p.subtract(p.multiplyScalar(7));
         p.getCoefficient(0);
         p.f(0);
-        ((PolynomialImplementation)p).shrinkArray();
+        ((ArrayPolynomial)p).shrinkArray();
 
         /* Package prime */
         GreatestCommonDivisorAlgorithm prime1 = IterativeGCDAlgorithm.getInstance();
@@ -72,8 +72,8 @@ public class VisibilityTest {
 
         /* Package vector */
         double [] vector = {5,3,2};
-        Vector vector1 = VectorImplementation.from(vector);
-        Vector vector2 = VectorImplementation.from(vector);
+        Vector vector1 = ArrayVector.from(vector);
+        Vector vector2 = ArrayVector.from(vector);
         vector1.getDimension();
         vector1.getScalarProduct(vector2.add(vector1));
         vector1.getValueAt(0);
@@ -84,8 +84,8 @@ public class VisibilityTest {
         int columnSize1 = 3;
         int rowSize2 = 3 ;
         int columnSize2 = 3;
-        Matrix m1 = MatrixImplementation.from(createTestMatrix(rowSize1,columnSize1));
-        Matrix m2 = MatrixImplementation.from(createTestMatrix(rowSize2,columnSize2));
+        Matrix m1 = ArrayMatrix.from(createTestMatrix(rowSize1,columnSize1));
+        Matrix m2 = ArrayMatrix.from(createTestMatrix(rowSize2,columnSize2));
         m1.getRowNumber();
         m1.getColumnNumber();
         m1.add(m2);

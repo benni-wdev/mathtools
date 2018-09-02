@@ -11,11 +11,11 @@ public class VectorsTest {
     public void convertToVectorTest() {
         int rowSize = 3 ;
         int columnSize = 1;
-        Matrix m = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Vector v1 = Vectors.convertToVector(m);
         rowSize = 1 ;
         columnSize = 3;
-        m = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        m = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Vector v2 = Vectors.convertToVector(m);
         for (int i = 0; i < v1.getDimension(); i++) {
             assertEquals(i,v1.getValueAt(i),delta);
@@ -33,7 +33,7 @@ public class VectorsTest {
     public void convertToVectorExceptionTest() {
         int rowSize = 2 ;
         int columnSize = 4;
-        Matrix m = MatrixImplementation.from(createTestMatrix(rowSize,columnSize));
+        Matrix m = ArrayMatrix.from(createTestMatrix(rowSize,columnSize));
         Vector v = Vectors.convertToVector(m);
     }
 
@@ -41,7 +41,7 @@ public class VectorsTest {
     @Test
     public void convertToMatrixTest() {
         int dim = 3 ;
-        Vector v = VectorImplementation.from(createTestVector(dim));
+        Vector v = ArrayVector.from(createTestVector(dim));
         Matrix m = Vectors.convertToMatrix(v);
         assertEquals(1,m.getColumnNumber());
         assertEquals(dim,m.getRowNumber());

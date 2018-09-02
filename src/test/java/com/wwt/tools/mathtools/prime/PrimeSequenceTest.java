@@ -17,7 +17,6 @@ public class PrimeSequenceTest {
         int number = 100;
         PrimeSequenceGenerator psg = SieveOfEratosthenes.getInstance();
         List<Integer> l = psg.getPrimeSequence(number);
-        System.out.println(psg+""+l);
         assertEquals(MathToolTest.getArrayAsList(p100),l);
         number=2;
         l = psg.getPrimeSequence(number);
@@ -30,7 +29,6 @@ public class PrimeSequenceTest {
         int number = 100;
         PrimeSequenceGenerator psg = SieveOfSundaram.getInstance();
         List<Integer> l = psg.getPrimeSequence(number);
-        System.out.println(psg+""+l);
         assertEquals(MathToolTest.getArrayAsList(p100),l);
         number=2;
         l = psg.getPrimeSequence(number);
