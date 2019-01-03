@@ -14,6 +14,15 @@ public final class IterativeGCDAlgorithm implements GreatestCommonDivisorAlgorit
      */
     private IterativeGCDAlgorithm() {}
 
+    /**
+     * Singleton instance
+     *
+     * @return the one and only IterativeGCDAlgorithm instance
+     */
+    public static IterativeGCDAlgorithm getInstance() {
+        return IterativeGCDAlgorithmHolder.INSTANCE;
+    }
+
     @Override
     public long getGreatestCommonDivisor(long a, long b) {
         a = Math.abs(a);
@@ -33,12 +42,5 @@ public final class IterativeGCDAlgorithm implements GreatestCommonDivisorAlgorit
         return "IterativeGCDAlgorithm{}";
     }
 
-    /**
-     * Singleton instance
-     *
-     * @return the one and only IterativeGCDAlgorithm instance
-     */
-    public static IterativeGCDAlgorithm getInstance() {
-        return IterativeGCDAlgorithmHolder.INSTANCE;
-    }
+
 }
