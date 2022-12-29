@@ -19,3 +19,8 @@ In the backlog:
 - graph package
 - linear equation solving
 - linear optimization
+
+--------------------------------------
+benni-wdev
+
+[https://www.wdev.ch](https://www.wdev.ch/)
